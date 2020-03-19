@@ -24,12 +24,16 @@ class Invoice:
         self.total_discount = total_discount
         return total_discount
 
+    def totalShipping(self, products):
+        total_price_shipping = self.totalPurePrice(products) + 4.99
+        return total_price_shipping
+
     def totalPurePrice(self, products):
-        total_pure_price = self.totalImpurePrice(products)-self.totalDiscount(products)
+        total_pure_price = self.totalImpurePrice(products) - self.totalDiscount(products)
         return total_pure_price
 
     def totalQuantity(self, products):
-        total_quantity =  0
+        total_quantity = 0
         for k, v in products.items():
             total_quantity += int(v['qnt'])
         return total_quantity
@@ -37,7 +41,7 @@ class Invoice:
     def inputAnswer(self, input_value):
         while True:
             userInput = input(input_value)
-            if userInput in ['v' , 'n']:
+            if userInput in ['v', 'n']:
                 return userInput
             print("y or n! Try again.")
 
@@ -46,7 +50,7 @@ class Invoice:
             try:
                 userInput = float(input(input_value))
             except ValueError:
-                print("Not a number! Try again.")
+                print("Not a number!. Try again.")
                 continue
             else:
                 return userInput

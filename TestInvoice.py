@@ -12,6 +12,11 @@ def invoice():
     invoice = Invoice()
     return invoice
 
+@pytest.fixture()
+def input_value():
+    input_value = {10, 2.45, 2}
+    return input_value
+
 def test_CanCalculateTotalImpurePrice(invoice, products):
     invoice.totalImpurePrice(products)
     assert invoice.totalImpurePrice(products) == 75
@@ -27,3 +32,7 @@ def test_CanCalculateTotalPurePrice(invoice, products):
 def test_CanCalculateTotalQuantity(invoice, products):
     invoice.totalQuantity(products)
     assert invoice.totalQuantity(products) == 15
+
+def test_InputNumber(invoice, products):
+    invoice.totalShipping(products)
+    assert invoice.totalShipping(products) == 69.38 + 4.99
