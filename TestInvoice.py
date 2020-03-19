@@ -33,6 +33,6 @@ def test_CanCalculateTotalQuantity(invoice, products):
     invoice.totalQuantity(products)
     assert invoice.totalQuantity(products) == 15
 
-def test_InputNumber(invoice, products):
+def test_CanCalculateTotalShipping(invoice, products):
     invoice.totalShipping(products)
     assert invoice.totalShipping(products) == 69.38 + 4.99
